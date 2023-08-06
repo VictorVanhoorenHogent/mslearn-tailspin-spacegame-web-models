@@ -6,6 +6,12 @@ variables:
   dotnetSdkVersion: '6.x'
 
 steps:
+
+- script: |
+    # Install mono on the build agent
+    sudo apt-get update
+    sudo apt-get install -y mono-complete
+  displayName: 'Install mono'
 - task: UseDotNet@2
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
